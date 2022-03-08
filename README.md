@@ -1,2 +1,2 @@
-# Photosence-Unity-game-
+# Photosence-Unity-game
 Entrance game project for RTUITlab
