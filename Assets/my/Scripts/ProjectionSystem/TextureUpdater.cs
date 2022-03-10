@@ -6,17 +6,34 @@ public class TextureUpdater : MonoBehaviour
 {
     public RenderTexture cameraImage;
     private Renderer rend;
-    public string texturePropetrtyID;
+    public string textureName;
+    private string texturePropetrtyID;
     [SerializeField] private Texture2D photo;
     Rect rectReadPicture;
+    private int rtW;
+    private int rtH;
     void Start()
     {
-        photo = new Texture2D(512, 512);
+        rtH = cameraImage.height;
+        rtW = cameraImage.width;
+        photo = new Texture2D(rtW, rtH);
         rend = GetComponent<Renderer>();
         //rend.material.SetTexture(texturePropetrtyID, photo);
 
-        rectReadPicture = new Rect(0, 0, 512, 512);
+        rectReadPicture = new Rect(0, 0, rtW, rtH);
 
+        if(textureName == "noisy")
+        {
+            texturePropetrtyID = "Texture2D_430c8df42ade4ad68bd8a0df74f8792b";
+        }
+        if (textureName == "retro")
+        {
+            texturePropetrtyID = "Texture2D_fdc1de0df2684f";
+        }
+        if (textureName == "digital")
+        {
+            texturePropetrtyID = "";
+        }
     }
 
     // Update is called once per frame
@@ -25,15 +42,9 @@ public class TextureUpdater : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
 
-            photo = new Texture2D(512, 512);
+            photo = new Texture2D(rtW, rtH);
 
-            // ofc you probably don't have a class that is called CameraController :P
-            //Camera activeCamera = CameraController.getActiveCamera();
-
-            // Initialize and render
-            //RenderTexture rt = new RenderTexture(width, height, 24);
-            //activeCamera.targetTexture = rt;
-            //activeCamera.Render();
+            
             RenderTexture.active = cameraImage;
 
             // Read pixels

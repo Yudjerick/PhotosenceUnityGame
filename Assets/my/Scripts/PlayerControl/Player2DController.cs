@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class Player2DController : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float speed;
     public float jumpForce;
     public string mode = "3D";
+    public Vector2 defaultPos;
+
+
     private bool isGrounded;
     private bool mustJump = false;
     private int triggeredObjects = 0;
+    private bool hasKey = false;
     void Start()
     {
         isGrounded = true;
@@ -28,10 +34,30 @@ public class Player2DController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.tag == "Key")
+        {
+            hasKey = true;
+            Destroy(other.gameObject);
+            return;
+        }
+        if (other.tag == "Door")
+        {
+            if (hasKey)
+            {
+                Debug.Log("Level passed");
+                SceneManager.LoadScene(0);
+            }
+            return;
+        }
         triggeredObjects++;
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other.tag == "Key" || other.tag == "Door")
+        {
+            return;
+        }
+        
         triggeredObjects--;
     }
 
@@ -48,6 +74,8 @@ public class Player2DController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.C))
             {
                 mode = "2D";
+                transform.position = new Vector3(defaultPos.x, defaultPos.y, transform.position.z);
+                rb.velocity = Vector2.zero;
             }
             return;
         }
@@ -63,6 +91,8 @@ public class Player2DController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             mode = "3D";
+            transform.position = new Vector3(defaultPos.x, defaultPos.y, transform.position.z);
+            rb.velocity = Vector2.zero;
         }
     }
 

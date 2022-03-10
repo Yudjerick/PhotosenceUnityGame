@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraImage: {fileID: 8400000, guid: 4b76b841d1174f54da80088e8e9331b4, type: 2}
-  texturePropetrtyID: Texture2D_fdc1de0df2684f
+  textureName: retro
   photo: {fileID: 0}
 --- !u!64 &479908098
 MeshCollider:
@@ -983,7 +983,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 99c5344947faa204f85ab611a1de8920, type: 2}
+  - {fileID: 2100000, guid: a700cdc619d314f478963c6a4019bf3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
