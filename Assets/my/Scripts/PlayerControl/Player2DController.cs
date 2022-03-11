@@ -14,7 +14,7 @@ public class Player2DController : MonoBehaviour
 
 
     private bool isGrounded;
-    private bool mustJump = false;
+    private int mustJump = 0;
     private int triggeredObjects = 0;
     private bool hasKey = false;
     void Start()
@@ -40,6 +40,12 @@ public class Player2DController : MonoBehaviour
             Destroy(other.gameObject);
             return;
         }
+        if (other.tag == "Deadly")
+        {
+            transform.position = new Vector3(defaultPos.x, defaultPos.y, transform.position.z);
+            rb.velocity = Vector2.zero;
+            return;
+        }
         if (other.tag == "Door")
         {
             if (hasKey)
@@ -53,7 +59,7 @@ public class Player2DController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Key" || other.tag == "Door")
+        if (other.tag == "Key" || other.tag == "Door" || other.tag == "Deadly")
         {
             return;
         }
@@ -64,6 +70,10 @@ public class Player2DController : MonoBehaviour
     private void Update()
     {
         isGrounded = true;
+        if (mustJump > 0)
+        {
+            mustJump -= 1;
+        }
         if(triggeredObjects == 0)
         {
             isGrounded = false;
@@ -81,12 +91,12 @@ public class Player2DController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            mustJump = true;
+            mustJump = 15;
         }
-        if (mustJump && isGrounded)
+        if (mustJump>0 && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            mustJump = false;
+            mustJump = 0;
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
