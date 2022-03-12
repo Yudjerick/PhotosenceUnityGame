@@ -11,6 +11,7 @@ public class Player2DController : MonoBehaviour
     public float jumpForce;
     public string mode = "3D";
     public Vector2 defaultPos;
+    public GameObject winScreen;
 
 
     private bool isGrounded;
@@ -26,11 +27,20 @@ public class Player2DController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(mode != "2D")
+        if (mustJump > 0)
+        {
+            mustJump -= 1;
+        }
+        if (mode != "2D")
         {
             return;
         }
         rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+        if (mustJump > 0 && isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            mustJump = 0;
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -51,7 +61,8 @@ public class Player2DController : MonoBehaviour
             if (hasKey)
             {
                 Debug.Log("Level passed");
-                SceneManager.LoadScene(0);
+                winScreen.SetActive(true);
+                //SceneManager.LoadScene(0);
             }
             return;
         }
@@ -70,10 +81,7 @@ public class Player2DController : MonoBehaviour
     private void Update()
     {
         isGrounded = true;
-        if (mustJump > 0)
-        {
-            mustJump -= 1;
-        }
+        
         if(triggeredObjects == 0)
         {
             isGrounded = false;
@@ -93,11 +101,7 @@ public class Player2DController : MonoBehaviour
         {
             mustJump = 15;
         }
-        if (mustJump>0 && isGrounded)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            mustJump = 0;
-        }
+      
         if (Input.GetKeyDown(KeyCode.C))
         {
             mode = "3D";
