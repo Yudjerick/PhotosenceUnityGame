@@ -15,9 +15,18 @@ EditorBuildSettings:
     path: Assets/xample/Scenes/Level1.unity
     guid: 18a5722c3cba84b4f8220a330ef15e3b
   - enabled: 1
+    path: Assets/xample/Scenes/Level2remake.unity
+    guid: 8f3358c623fd47f4396d3ba1c311df16
+  - enabled: 0
     path: Assets/xample/Scenes/Level2.unity
     guid: 93fda34c65c7d864d803df0841b0b63c
   - enabled: 1
     path: Assets/xample/Scenes/Level3.unity
     guid: 4b09e8b350ff19e42a571d5a41272c29
+  - enabled: 1
+    path: Assets/xample/Scenes/Level4.unity
+    guid: 9e1de4d53a5b312458380351aeaffb7f
+  - enabled: 1
+    path: Assets/xample/Scenes/Level5.unity
+    guid: 87a80e8e196ffe04583dc807bb13485c
   m_configObjects: {}

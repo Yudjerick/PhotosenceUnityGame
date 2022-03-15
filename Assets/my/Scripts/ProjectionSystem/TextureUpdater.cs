@@ -32,7 +32,11 @@ public class TextureUpdater : MonoBehaviour
         }
         if (textureName == "digital")
         {
-            texturePropetrtyID = "";
+            texturePropetrtyID = "Texture2D_5fe93edfa3f34564bbab352ec03a3a56";
+        }
+        if (textureName == "abstract")
+        {
+            texturePropetrtyID = "Texture2D_dcceaa38629e48e6acea2d244fca997f";
         }
     }
 

@@ -18,6 +18,7 @@ public class Player2DController : MonoBehaviour
     private int mustJump = 0;
     private int triggeredObjects = 0;
     private bool hasKey = false;
+    private GameObject key;
     void Start()
     {
         isGrounded = true;
@@ -47,11 +48,17 @@ public class Player2DController : MonoBehaviour
         if(other.tag == "Key")
         {
             hasKey = true;
-            Destroy(other.gameObject);
+            key = other.gameObject;
+            key.SetActive(false);
             return;
         }
         if (other.tag == "Deadly")
         {
+            hasKey = false;
+            if (key != null)
+            {
+                key.SetActive(true); 
+            }
             transform.position = new Vector3(defaultPos.x, defaultPos.y, transform.position.z);
             rb.velocity = Vector2.zero;
             return;
