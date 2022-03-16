@@ -14,11 +14,11 @@ public class TextureUpdater : MonoBehaviour
     private int rtH;
     void Start()
     {
+
         rtH = cameraImage.height;
         rtW = cameraImage.width;
         photo = new Texture2D(rtW, rtH);
         rend = GetComponent<Renderer>();
-        //rend.material.SetTexture(texturePropetrtyID, photo);
 
         rectReadPicture = new Rect(0, 0, rtW, rtH);
 
@@ -43,7 +43,7 @@ public class TextureUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && Mode.mode == "3D")
         {
 
             photo = new Texture2D(rtW, rtH);
@@ -55,9 +55,6 @@ public class TextureUpdater : MonoBehaviour
             photo.ReadPixels(rectReadPicture, 0, 0);
             photo.Apply();
             rend.material.SetTexture(texturePropetrtyID, photo);
-
-
-            // Clean up;
 
         }
     }

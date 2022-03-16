@@ -7,8 +7,9 @@ public class Player3DController : MonoBehaviour
     private Rigidbody rb;
     public float speed;
     public float jumpForce;
-    public string mode = "3D";
+    //public string mode = "2D";
     private bool isGrounded = true;
+    private int triggeredObjects = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -17,7 +18,7 @@ public class Player3DController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(mode != "3D")
+        if(Mode.mode != "3D")
         {
             return;
         }
@@ -27,12 +28,14 @@ public class Player3DController : MonoBehaviour
 
     private void Update()
     {
-        if (mode != "3D")
+        isGrounded = true;
+        if (triggeredObjects == 0)
         {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                mode = "3D";
-            }
+            isGrounded = false;
+        }
+
+        if (Mode.mode != "3D")
+        {
             return;
         }
 
@@ -40,19 +43,14 @@ public class Player3DController : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            mode = "2D";
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        isGrounded = true;
+        triggeredObjects += 1;
     }
     private void OnTriggerExit(Collider other)
     {
-        isGrounded = false;
+        triggeredObjects -= 1; ;
     }
 }

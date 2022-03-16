@@ -9,7 +9,7 @@ public class Player2DController : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     public float jumpForce;
-    public string mode = "3D";
+    //public string mode = "2D";
     public Vector2 defaultPos;
     public GameObject winScreen;
 
@@ -32,7 +32,7 @@ public class Player2DController : MonoBehaviour
         {
             mustJump -= 1;
         }
-        if (mode != "2D")
+        if (Mode.mode != "2D")
         {
             return;
         }
@@ -94,11 +94,10 @@ public class Player2DController : MonoBehaviour
             isGrounded = false;
         }
 
-        if (mode != "2D")
+        if (Mode.mode != "2D")
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                mode = "2D";
                 transform.position = new Vector3(defaultPos.x, defaultPos.y, transform.position.z);
                 rb.velocity = Vector2.zero;
             }
@@ -111,7 +110,11 @@ public class Player2DController : MonoBehaviour
       
         if (Input.GetKeyDown(KeyCode.C))
         {
-            mode = "3D";
+            hasKey = false;
+            if (key != null)
+            {
+                key.SetActive(true);
+            }
             transform.position = new Vector3(defaultPos.x, defaultPos.y, transform.position.z);
             rb.velocity = Vector2.zero;
         }

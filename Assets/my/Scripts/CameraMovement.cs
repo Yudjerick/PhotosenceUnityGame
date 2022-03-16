@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    private bool mode3d = true;
+    //private bool mode3d = false;
     public Transform Player3D;
     public Transform Cam2DPos;
     public float smoothness = 0.1f;
@@ -19,6 +19,7 @@ public class CameraMovement : MonoBehaviour
     private Quaternion defaultRot;
     private void Start()
     {
+        Mode.mode = "2D";
         cameraOffset = transform.position - Player3D.position;
         cameraOffsetRaw = cameraOffset;
         defaultRot = transform.rotation;
@@ -30,8 +31,17 @@ public class CameraMovement : MonoBehaviour
         Quaternion targetRot;
         if (Input.GetKeyDown(KeyCode.C))
         {
-            mode3d = !mode3d;
-            
+            if(Mode.mode == "2D")
+            {
+                Mode.mode = "3D";
+            }
+            else
+            if (Mode.mode == "3D")
+            {
+                Mode.mode = "2D";
+            }
+
+
         }
 
         if (cameraOffsetRaw.magnitude > minOffset && cameraOffsetRaw.magnitude < maxOffset)
@@ -51,7 +61,7 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        if (mode3d)
+        if (Mode.mode == "3D")
         {
             targetPos = Player3D.position + cameraOffset;
             targetRot = defaultRot;

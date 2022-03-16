@@ -65,7 +65,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 7387208022735840794}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 37d7c47961bc2384cbb691bea38d4b0f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1096362231913686868, guid: d511680af617cc442b0833d9de3885d6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,7 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: -2
   jumpForce: 4
-  mode: 3D
   defaultPos: {x: 0, y: 0}
   winScreen: {fileID: 0}
 --- !u!61 &5590444462217924803

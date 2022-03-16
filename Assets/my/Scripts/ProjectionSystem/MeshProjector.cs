@@ -27,28 +27,19 @@ public class MeshProjector : FigureProjector
         projectionsAmount = triangles.Length / 3;
         projections = new GameObject[projectionsAmount];
 
-        for(int i = 0; i < projectionsAmount; i++)
-        {
-
-            projections[i] = Instantiate(polygonProjRef, center3, Quaternion.identity);
-            PolygonCollider2D polyCol = projections[i].GetComponent<PolygonCollider2D>();
-            Vector2[] newPoints = new Vector2[3];
-            for (int j = 0; j < 3; j++)
-            {
-                newPoints[j] = CalculatePoint(plane, cameraPoint.position, transform.TransformPoint(vertices[triangles[j+i*3]])) - center3; // works with planes perpendicular z
-
-            }
-            polyCol.points = newPoints;
-        }
+        
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && Mode.mode == "3D")
         {
             for (int i = 0; i < projectionsAmount; i++)
             {
-                Destroy(projections[i]);
+                if (projections[i] != null)
+                {
+                    Destroy(projections[i]);
+                }
 
                 projections[i] = Instantiate(polygonProjRef, center3, Quaternion.identity);
                 PolygonCollider2D polyCol = projections[i].GetComponent<PolygonCollider2D>();
