@@ -12,7 +12,7 @@
 
 ##### Ссылки
 - Ссылка на видео с демонстрацией проекта [Video](https://www.youtube.com/watch?v=togSPPPbXIc).
-- Ссылка на папку с готовым билдом игры [Game](https://github.com/Yudjerick/Photosence-Unity-game-/tree/main/BUILTS) (необходимо скачать всю папку).
+- Ссылка на папку с готовым билдом игры [Game](https://github.com/Yudjerick/Photosence-Unity-game-/tree/main/BUILTS) (для запуска необходимо скачать всю папку и запустить файл Photosence.exe).
 
 ##### Управление
 - WASD - перемещение
