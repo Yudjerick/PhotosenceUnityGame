@@ -1,4 +1,4 @@
-# Photosence Unity game
+# Photosence
 *Entrance game project for RTUITlab*
 
 ##### Жанр
