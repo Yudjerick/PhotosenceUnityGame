@@ -11,8 +11,8 @@
 В 2D мире игроку нужно взять ключ и добраться до двери. В 3D мире игроку нужно толкать объекты и фотографировать их, изменяя тем самым 2D уровень.
 
 ##### Ссылки
-- Ссылка на видео с демонстрацией проекта [Video](https://www.youtube.com/watch?v=togSPPPbXIc).
-- Ссылка на папку с готовым билдом игры [Game](https://github.com/Yudjerick/Photosence-Unity-game-/tree/main/BUILTS) **(для запуска необходимо скачать всю папку и запустить файл Photosence.exe)**.
+- [Видео с демонстрацией проекта](https://www.youtube.com/watch?v=togSPPPbXIc).
+- [Билд игры](https://drive.google.com/drive/folders/1mN9hdl5ojBm0jNxWbuZvrsVL6uCBMk64?usp=drive_link) **(для запуска необходимо скачать всю папку и запустить файл Photosence.exe)**.
 
 ##### Управление
 - **WASD** - перемещение
